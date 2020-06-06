@@ -9,16 +9,13 @@ import UIKit
 
 extension PhotoEditorViewController {
     
-    override public func touchesBegan(_ touches: Set<UITouch>,
-                                      with event: UIEvent?){
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isDrawing {
             swiped = false
             if let touch = touches.first {
-                lastPoint = touch.location(in: self.canvasImageView)
+                lastPoint = touch.location(in: self.canvasImageViews[activeIndex])
             }
-        }
-            //Hide stickersVC if clicked outside it
-        else if stickersVCIsVisible == true {
+        }else if stickersVCIsVisible == true {
             if let touch = touches.first {
                 let location = touch.location(in: self.view)
                 if !stickersViewController.view.frame.contains(location) {
@@ -26,7 +23,6 @@ extension PhotoEditorViewController {
                 }
             }
         }
-        
     }
     
     override public func touchesMoved(_ touches: Set<UITouch>,
@@ -35,9 +31,9 @@ extension PhotoEditorViewController {
             // 6
             swiped = true
             if let touch = touches.first {
-                let currentPoint = touch.location(in: canvasImageView)
+                let currentPoint = touch.location(in: canvasImageViews[activeIndex])
                 drawLineFrom(lastPoint, toPoint: currentPoint)
-                
+
                 // 7
                 lastPoint = currentPoint
             }
@@ -57,6 +53,7 @@ extension PhotoEditorViewController {
     
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         // 1
+        let canvasImageView = canvasImageViews[activeIndex]
         let canvasSize = canvasImageView.frame.integral.size
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, 0)
         if let context = UIGraphicsGetCurrentContext() {

@@ -1,24 +1,21 @@
 //
 //  PhotoEditor+Crop.swift
-//  Pods
+//  CropViewController
 //
-//  Created by Mohamed Hamed on 6/16/17.
-//
+//  Created by Jovanpreet Randhawa on 28/05/20.
 //
 
-import Foundation
 import UIKit
+import CropViewController
 
-// MARK: - CropView
 extension PhotoEditorViewController: CropViewControllerDelegate {
     
-    public func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect) {
-        controller.dismiss(animated: true, completion: nil)
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         self.setImageView(image: image)
+        cropViewController.dismiss(animated: true, completion: nil)
     }
     
-    public func cropViewControllerDidCancel(_ controller: CropViewController) {
-        controller.dismiss(animated: true, completion: nil)
+    public func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+        dismiss(animated: true, completion: nil)
     }
-    
 }

@@ -22,7 +22,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
             if view is UIImageView {
                 //Tap only on visible parts on the image
                 if recognizer.state == .began {
-                    for imageView in subImageViews(view: canvasImageView) {
+                    for imageView in subImageViews(view: canvasImageViews[activeIndex]) {
                         let location = recognizer.location(in: imageView)
                         let alpha = imageView.alphaAtPoint(location)
                         if alpha > 0 {
@@ -91,7 +91,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
         if let view = recognizer.view {
             if view is UIImageView {
                 //Tap only on visible parts on the image
-                for imageView in subImageViews(view: canvasImageView) {
+                for imageView in subImageViews(view: canvasImageViews[activeIndex]) {
                     let location = recognizer.location(in: imageView)
                     let alpha = imageView.alphaAtPoint(location)
                     if alpha > 0 {
@@ -165,7 +165,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
         
         hideToolbar(hide: true)
         deleteView.isHidden = false
-        
+        let canvasImageView = canvasImageViews[activeIndex]
         view.superview?.bringSubviewToFront(view)
         let pointToSuperView = recognizer.location(in: self.view)
 
@@ -183,7 +183,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
                 }
                 UIView.animate(withDuration: 0.3, animations: {
                     view.transform = view.transform.scaledBy(x: 0.25, y: 0.25)
-                    view.center = recognizer.location(in: self.canvasImageView)
+                    view.center = recognizer.location(in: canvasImageView)
                 })
             }
                 //View is going out of deleteView
@@ -191,7 +191,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
                 //Scale to original Size
                 UIView.animate(withDuration: 0.3, animations: {
                     view.transform = view.transform.scaledBy(x: 4, y: 4)
-                    view.center = recognizer.location(in: self.canvasImageView)
+                    view.center = recognizer.location(in: canvasImageView)
                 })
             }
         }
@@ -212,7 +212,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
                 }
             } else if !canvasImageView.bounds.contains(view.center) { //Snap the view back to canvasImageView
                 UIView.animate(withDuration: 0.3, animations: {
-                    view.center = self.canvasImageView.center
+                    view.center = canvasImageView.center
                 })
                 
             }

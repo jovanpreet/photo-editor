@@ -14,9 +14,9 @@ extension PhotoEditorViewController {
     func addStickersViewController() {
         stickersVCIsVisible = true
         hideToolbar(hide: true)
-        self.canvasImageView.isUserInteractionEnabled = false
+        canvasImageViews[activeIndex].isUserInteractionEnabled = false
         stickersViewController.stickersViewControllerDelegate = self
-        
+
         for image in self.stickers {
             stickersViewController.stickers.append(image)
         }
@@ -30,7 +30,7 @@ extension PhotoEditorViewController {
     
     func removeStickersView() {
         stickersVCIsVisible = false
-        self.canvasImageView.isUserInteractionEnabled = true
+        canvasImageViews[activeIndex].isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.3,
                        delay: 0,
                        options: UIView.AnimationOptions.curveEaseIn,
@@ -38,7 +38,7 @@ extension PhotoEditorViewController {
                         var frame = self.stickersViewController.view.frame
                         frame.origin.y = UIScreen.main.bounds.maxY
                         self.stickersViewController.view.frame = frame
-                        
+
         }, completion: { (finished) -> Void in
             self.stickersViewController.view.removeFromSuperview()
             self.stickersViewController.removeFromParent()
@@ -51,22 +51,22 @@ extension PhotoEditorViewController: StickersViewControllerDelegate {
     
     func didSelectView(view: UIView) {
         self.removeStickersView()
-        
+        let canvasImageView = canvasImageViews[activeIndex]
         view.center = canvasImageView.center
-        self.canvasImageView.addSubview(view)
+        canvasImageView.addSubview(view)
         //Gestures
         addGestures(view: view)
     }
     
     func didSelectImage(image: UIImage) {
         self.removeStickersView()
-        
+        let canvasImageView = canvasImageViews[activeIndex]
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.frame.size = CGSize(width: 150, height: 150)
         imageView.center = canvasImageView.center
         
-        self.canvasImageView.addSubview(imageView)
+        canvasImageView.addSubview(imageView)
         //Gestures
         addGestures(view: imageView)
     }

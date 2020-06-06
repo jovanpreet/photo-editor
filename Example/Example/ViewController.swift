@@ -40,20 +40,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        
-        guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else {
-            picker.dismiss(animated: true, completion: nil)
-            return
-        }
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         picker.dismiss(animated: true, completion: nil)
-        
-        
+        guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
         let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
         photoEditor.photoEditorDelegate = self
-        photoEditor.image = image
+        photoEditor.originalImage = [image, image.copy() as! UIImage]
         //Colors for drawing and Text, If not set default values will be used
         //photoEditor.colors = [.red, .blue, .green]
         
@@ -64,7 +56,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         //To hide controls - array of enum control
         //photoEditor.hiddenControls = [.crop, .draw, .share]
-        photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext //or .overFullScreen for transparency
+        photoEditor.modalPresentationStyle = .fullScreen
         present(photoEditor, animated: true, completion: nil)
     }
     

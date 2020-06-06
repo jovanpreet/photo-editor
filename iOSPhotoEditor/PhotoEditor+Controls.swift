@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CropViewController
 
 // MARK: - Control
 public enum control {
@@ -15,8 +16,6 @@ public enum control {
     case sticker
     case draw
     case text
-    case save
-    case share
     case clear
 }
 
@@ -30,11 +29,10 @@ extension PhotoEditorViewController {
     }
 
     @IBAction func cropButtonTapped(_ sender: UIButton) {
-        let controller = CropViewController()
+        let image = originalImage[activeIndex]// else { return }
+        let controller = CropViewController(image: image)
         controller.delegate = self
-        controller.image = image
-        let navController = UINavigationController(rootViewController: controller)
-        present(navController, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
 
     @IBAction func stickersButtonTapped(_ sender: Any) {
@@ -43,7 +41,8 @@ extension PhotoEditorViewController {
 
     @IBAction func drawButtonTapped(_ sender: Any) {
         isDrawing = true
-        canvasImageView.isUserInteractionEnabled = false
+        mainScrollView.isUserInteractionEnabled = false
+//        canvasImageViews[activeIndex].isUserInteractionEnabled = false
         doneButton.isHidden = false
         colorPickerView.isHidden = false
         hideToolbar(hide: true)
@@ -51,9 +50,9 @@ extension PhotoEditorViewController {
 
     @IBAction func textButtonTapped(_ sender: Any) {
         isTyping = true
-        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageView.center.y,
-                                                width: UIScreen.main.bounds.width, height: 30))
-        
+        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageViews[activeIndex].center.y,
+                                                width: canvasWidthConstraints[activeIndex].constant, height: 30))
+
         textView.textAlignment = .center
         textView.font = UIFont(name: "Helvetica", size: 30)
         textView.textColor = textColor
@@ -65,45 +64,37 @@ extension PhotoEditorViewController {
         textView.autocorrectionType = .no
         textView.isScrollEnabled = false
         textView.delegate = self
-        self.canvasImageView.addSubview(textView)
+        self.canvasImageViews[activeIndex].addSubview(textView)
         addGestures(view: textView)
         textView.becomeFirstResponder()
     }    
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         view.endEditing(true)
+        mainScrollView.isUserInteractionEnabled = true
         doneButton.isHidden = true
         colorPickerView.isHidden = true
-        canvasImageView.isUserInteractionEnabled = true
+//        canvasImageViews[activeIndex].isUserInteractionEnabled = true
         hideToolbar(hide: false)
         isDrawing = false
     }
     
     //MARK: Bottom Toolbar
     
-    @IBAction func saveButtonTapped(_ sender: AnyObject) {
-        UIImageWriteToSavedPhotosAlbum(canvasView.toImage(),self, #selector(PhotoEditorViewController.image(_:withPotentialError:contextInfo:)), nil)
-    }
-    
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        let activity = UIActivityViewController(activityItems: [canvasView.toImage()], applicationActivities: nil)
-        present(activity, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func clearButtonTapped(_ sender: AnyObject) {
         //clear drawing
+        let canvasImageView = canvasImageViews[activeIndex]
         canvasImageView.image = nil
-        //clear stickers and textviews
+//        //clear stickers and textviews
         for subview in canvasImageView.subviews {
             subview.removeFromSuperview()
         }
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
-        let img = self.canvasView.toImage()
-        photoEditorDelegate?.doneEditing(image: img)
-        self.dismiss(animated: true, completion: nil)
+//        let img = self.canvasView.toImage()
+//        photoEditorDelegate?.doneEditing(image: img)
+//        self.dismiss(animated: true, completion: nil)
     }
 
     //MAKR: helper methods
@@ -124,10 +115,6 @@ extension PhotoEditorViewController {
                 cropButton.isHidden = true
             case .draw:
                 drawButton.isHidden = true
-            case .save:
-                saveButton.isHidden = true
-            case .share:
-                shareButton.isHidden = true
             case .sticker:
                 stickerButton.isHidden = true
             case .text:
