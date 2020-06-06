@@ -18,6 +18,14 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
      Selecting transparent parts of the imageview won't move the object
      */
     @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .cancelled, .failed, .ended:
+            mainScrollView.panGestureRecognizer.isEnabled = true
+        case .began:
+            mainScrollView.panGestureRecognizer.isEnabled = false
+        default:
+            break
+        }
         if let view = recognizer.view {
             if view is UIImageView {
                 //Tap only on visible parts on the image

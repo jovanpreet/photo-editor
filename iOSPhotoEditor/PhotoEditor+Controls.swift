@@ -42,7 +42,6 @@ extension PhotoEditorViewController {
     @IBAction func drawButtonTapped(_ sender: Any) {
         isDrawing = true
         mainScrollView.isUserInteractionEnabled = false
-//        canvasImageViews[activeIndex].isUserInteractionEnabled = false
         doneButton.isHidden = false
         colorPickerView.isHidden = false
         hideToolbar(hide: true)
@@ -50,9 +49,7 @@ extension PhotoEditorViewController {
 
     @IBAction func textButtonTapped(_ sender: Any) {
         isTyping = true
-        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageViews[activeIndex].center.y,
-                                                width: canvasWidthConstraints[activeIndex].constant, height: 30))
-
+        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageViews[activeIndex].center.y, width: canvasWidthConstraints[activeIndex].constant, height: 30))
         textView.textAlignment = .center
         textView.font = UIFont(name: "Helvetica", size: 30)
         textView.textColor = textColor
@@ -74,7 +71,6 @@ extension PhotoEditorViewController {
         mainScrollView.isUserInteractionEnabled = true
         doneButton.isHidden = true
         colorPickerView.isHidden = true
-//        canvasImageViews[activeIndex].isUserInteractionEnabled = true
         hideToolbar(hide: false)
         isDrawing = false
     }
@@ -82,19 +78,16 @@ extension PhotoEditorViewController {
     //MARK: Bottom Toolbar
     
     @IBAction func clearButtonTapped(_ sender: AnyObject) {
-        //clear drawing
         let canvasImageView = canvasImageViews[activeIndex]
         canvasImageView.image = nil
-//        //clear stickers and textviews
-        for subview in canvasImageView.subviews {
-            subview.removeFromSuperview()
-        }
+        for subview in canvasImageView.subviews { subview.removeFromSuperview() }
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
-//        let img = self.canvasView.toImage()
-//        photoEditorDelegate?.doneEditing(image: img)
-//        self.dismiss(animated: true, completion: nil)
+        var images = [UIImage]()
+        for canvasView in canvasViews { images.append(canvasView.toImage()) }
+        photoEditorDelegate?.doneEditing(images: images)
+        self.dismiss(animated: true, completion: nil)
     }
 
     //MAKR: helper methods

@@ -18,7 +18,7 @@ public protocol PhotoEditorDelegate {
     /**
      - Parameter image: edited Image
      */
-    func doneEditing(image: UIImage)
+    func doneEditing(images: [UIImage])
     /**
      StickersViewController did Disappear
      */
