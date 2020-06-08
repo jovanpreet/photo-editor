@@ -26,27 +26,23 @@ extension PhotoEditorViewController: UITextViewDelegate {
         lastTextViewFont = textView.font!
         activeTextView = textView
         textView.superview?.bringSubviewToFront(textView)
-        textView.font = UIFont(name: "Helvetica", size: 30)
-        UIView.animate(withDuration: 0.3,
-                       animations: {
-                        textView.transform = CGAffineTransform.identity
-                        textView.center = CGPoint(x: UIScreen.main.bounds.width / 2,
-                                                  y:  UIScreen.main.bounds.height / 5)
+        textView.font = .systemFont(ofSize: 30)
+        textView.bounds.size = CGSize(width: canvasWidthConstraints[activeIndex].constant, height: textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude)).height)
+        UIView.animate(withDuration: 0.3, animations: {
+            textView.transform = CGAffineTransform.identity
+            
+            textView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/5)
         }, completion: nil)
-        
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
-        guard lastTextViewTransform != nil && lastTextViewTransCenter != nil && lastTextViewFont != nil
-            else {
-                return
-        }
+        guard lastTextViewTransform != nil && lastTextViewTransCenter != nil && lastTextViewFont != nil else { return }
         activeTextView = nil
         textView.font = self.lastTextViewFont!
-        UIView.animate(withDuration: 0.3,
-                       animations: {
-                        textView.transform = self.lastTextViewTransform!
-                        textView.center = self.lastTextViewTransCenter!
+        UIView.animate(withDuration: 0.3, animations: {
+            textView.bounds.size = textView.sizeThatFits(CGSize(width: self.canvasWidthConstraints[self.activeIndex].constant, height: .greatestFiniteMagnitude))
+            textView.transform = self.lastTextViewTransform!
+            textView.center = self.lastTextViewTransCenter!
         }, completion: nil)
     }
     

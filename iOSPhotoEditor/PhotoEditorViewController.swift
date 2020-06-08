@@ -101,6 +101,7 @@ public class PhotoEditorViewController: UIViewController {
             let canvasImageView = UIImageView()
             canvasImageView.contentMode = .scaleAspectFill
             canvasImageView.translatesAutoresizingMaskIntoConstraints = false
+            canvasImageView.isUserInteractionEnabled = true
             canvasImageViews.append(canvasImageView)
             canvasView.addSubview(canvasImageView)
             canvasViews.append(canvasView)

@@ -54,28 +54,19 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
      */
     @objc func pinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         if let view = recognizer.view {
-            if view is UITextView {
-                let textView = view as! UITextView
-                
-                if textView.font!.pointSize * recognizer.scale < 90 {
-                    let font = UIFont(name: textView.font!.fontName, size: textView.font!.pointSize * recognizer.scale)
-                    textView.font = font
-                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-                                                                 height:CGFloat.greatestFiniteMagnitude))
-                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-                                                  height: sizeToFit.height)
-                } else {
-                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-                                                                 height:CGFloat.greatestFiniteMagnitude))
-                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-                                                  height: sizeToFit.height)
-                }
-                
-                
-                textView.setNeedsDisplay()
-            } else {
-                view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
-            }
+            if let textView = view as? UITextView {
+                let newSize = (textView.font?.pointSize ?? 30) * recognizer.scale
+                if newSize < 60 {
+                    textView.font = .systemFont(ofSize: newSize)
+//                    let sizeToFit = textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude))
+//                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width, height: sizeToFit.height)
+                }/*else {
+                    let sizeToFit = textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude))
+                    textView.bounds.size = textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude))//CGSize(width: textView.intrinsicContentSize.width, height: sizeToFit.height)
+                }*/
+                textView.bounds.size = textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude))
+//                textView.setNeedsDisplay()
+            }else { view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale) }
             recognizer.scale = 1
         }
     }
