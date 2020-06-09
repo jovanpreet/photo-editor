@@ -30,7 +30,6 @@ extension PhotoEditorViewController: UITextViewDelegate {
         textView.bounds.size = CGSize(width: canvasWidthConstraints[activeIndex].constant, height: textView.sizeThatFits(CGSize(width: canvasWidthConstraints[activeIndex].constant, height: .greatestFiniteMagnitude)).height)
         UIView.animate(withDuration: 0.3, animations: {
             textView.transform = CGAffineTransform.identity
-            
             textView.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/5)
         }, completion: nil)
     }
@@ -39,8 +38,8 @@ extension PhotoEditorViewController: UITextViewDelegate {
         guard lastTextViewTransform != nil && lastTextViewTransCenter != nil && lastTextViewFont != nil else { return }
         activeTextView = nil
         textView.font = self.lastTextViewFont!
+        textView.bounds.size = textView.sizeThatFits(CGSize(width: self.canvasWidthConstraints[self.activeIndex].constant, height: .greatestFiniteMagnitude))
         UIView.animate(withDuration: 0.3, animations: {
-            textView.bounds.size = textView.sizeThatFits(CGSize(width: self.canvasWidthConstraints[self.activeIndex].constant, height: .greatestFiniteMagnitude))
             textView.transform = self.lastTextViewTransform!
             textView.center = self.lastTextViewTransCenter!
         }, completion: nil)

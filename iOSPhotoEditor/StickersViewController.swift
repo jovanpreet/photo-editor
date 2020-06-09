@@ -88,14 +88,9 @@ class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
         emojisDelegate.stickersViewControllerDelegate = stickersViewControllerDelegate
         emojisCollectioView.delegate = emojisDelegate
         emojisCollectioView.dataSource = emojisDelegate
-        
         emojisCollectioView.register(
             UINib(nibName: "EmojiCollectionViewCell", bundle: Bundle(for: EmojiCollectionViewCell.self)),
             forCellWithReuseIdentifier: "EmojiCollectionViewCell")
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         prepareBackgroundView()
     }
     
@@ -190,14 +185,16 @@ class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
     
-    func prepareBackgroundView(){
-        let blurEffect = UIBlurEffect.init(style: .light)
-        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-        let bluredView = UIVisualEffectView.init(effect: blurEffect)
-        bluredView.contentView.addSubview(visualEffect)
-        visualEffect.frame = UIScreen.main.bounds
-        bluredView.frame = UIScreen.main.bounds
-        view.insertSubview(bluredView, at: 0)
+    func prepareBackgroundView() {
+        let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffect.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(visualEffect, at: 0)
+        NSLayoutConstraint.activate([
+            visualEffect.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            visualEffect.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            visualEffect.topAnchor.constraint(equalTo: view.topAnchor),
+            visualEffect.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     
@@ -214,6 +211,7 @@ extension StickersViewController: UIScrollViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension StickersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

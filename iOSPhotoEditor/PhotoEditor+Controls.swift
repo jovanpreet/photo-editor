@@ -31,6 +31,7 @@ extension PhotoEditorViewController {
     @IBAction func cropButtonTapped(_ sender: UIButton) {
         let image = originalImage[activeIndex]// else { return }
         let controller = CropViewController(image: image)
+        controller.aspectRatioLockDimensionSwapEnabled = true
         controller.delegate = self
         present(controller, animated: true, completion: nil)
     }
