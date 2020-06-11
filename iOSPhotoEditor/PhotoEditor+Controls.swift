@@ -50,7 +50,7 @@ extension PhotoEditorViewController {
 
     @IBAction func textButtonTapped(_ sender: Any) {
         isTyping = true
-        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageViews[activeIndex].center.y, width: canvasWidthConstraints[activeIndex].constant, height: 50))
+        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageViews[activeIndex].center.y-25, width: canvasWidthConstraints[activeIndex].constant, height: 50))
         textView.textAlignment = .center
         textView.font = .systemFont(ofSize: 30)
         textView.textColor = textColor
@@ -67,7 +67,7 @@ extension PhotoEditorViewController {
     }    
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        view.endEditing(true)
+        if let textView = activeTextView { textView.resignFirstResponder() }
         mainScrollView.isUserInteractionEnabled = true
         doneButton.isHidden = true
         colorPickerView.isHidden = true
