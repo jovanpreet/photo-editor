@@ -34,6 +34,8 @@
 		4E9382BF3763A68400B58E6512F6DE23 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909894CF5561FA0FCB95519BC093368 /* GradientView.swift */; };
 		4FDF851B7B66B5F47086CAF035CC45D5 /* TOCropViewControllerTransitioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 9663BF91FE0F103EEC1C6173B72256E5 /* TOCropViewControllerTransitioning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		501DF6CC248B855F0071AA37 /* PhotoEditor+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DF6CA248B855F0071AA37 /* PhotoEditor+Crop.swift */; };
+		50A56B462497668700CE27B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50A56B482497668700CE27B8 /* Localizable.strings */; };
+		50A56B4A249789AC00CE27B8 /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A56B4C249789AC00CE27B8 /* PhotoEditorViewController.xib */; };
 		55DABFACB6849AA3BE0A2CDFA476F7F1 /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD58DCC3CE28BFDC3BB3B9CD2D19AAF1 /* UIImage+CropRotate.m */; };
 		5671F6067885AB11E915F1E7D75E9230 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6440C3BCC191BA356A5D2E33D88848C /* EmojiCollectionViewCell.swift */; };
 		58610ED925E763568D0F8452A00DB80C /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C2AF85EAC6E9673D928C4070CDA61A52 /* hu.lproj */; };
@@ -84,7 +86,6 @@
 		DB724DD058689CEC12DADA6EDE48E877 /* StickersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF51AFB75573779FCB4BC6E2616E700B /* StickersViewController.xib */; };
 		DC3550C29FCBD11A90A76FDB542EF31E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5C0900895359CA317A2F3D2D0C9DBA4D /* en.lproj */; };
 		DD1D57F0F2377D985CD8C94BD3C6620D /* ColorsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C23F102DB5004D0584DE11A09DEA7 /* ColorsCollectionViewDelegate.swift */; };
-		DD3652E27BB637F3070F430CE9178AFF /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F474A2EA1F916D37BE74ACD248237398 /* PhotoEditorViewController.xib */; };
 		DDAAA73FF9068FC7FD59782E84433D9D /* CropViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D885A4F29A828E2BF553C144E416750F /* CropViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE0209B68D58D8600F0C7B9F5639F9E7 /* TOCropToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 177E886451E8DE6BA7C25B059EA9D868 /* TOCropToolbar.m */; };
 		E13372B63486D7FF431908499DA04D55 /* CropViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657EABFD276E2DF4D01E0F1A01A2F03 /* CropViewController-dummy.m */; };
@@ -160,6 +161,11 @@
 		4EFF7EAADF1A0B5866E5E422F8728399 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = it.lproj; path = "Objective-C/TOCropViewController/Resources/it.lproj"; sourceTree = "<group>"; };
 		4F8C1FC42F30E58B664C3FA850900B90 /* TOActivityCroppedImageProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOActivityCroppedImageProvider.m; path = "Objective-C/TOCropViewController/Models/TOActivityCroppedImageProvider.m"; sourceTree = "<group>"; };
 		501DF6CA248B855F0071AA37 /* PhotoEditor+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PhotoEditor+Crop.swift"; path = "iOSPhotoEditor/PhotoEditor+Crop.swift"; sourceTree = "<group>"; };
+		50A56B472497668700CE27B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50A56B492497897800CE27B8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50A56B4B249789AC00CE27B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhotoEditorViewController.xib; sourceTree = "<group>"; };
+		50A56B4E249789AE00CE27B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PhotoEditorViewController.strings; sourceTree = "<group>"; };
+		50A56B50249789B000CE27B8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/PhotoEditorViewController.strings; sourceTree = "<group>"; };
 		5657EABFD276E2DF4D01E0F1A01A2F03 /* CropViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CropViewController-dummy.m"; sourceTree = "<group>"; };
 		56A9163282BF86DFF1CE8D8E6774AE98 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = de.lproj; path = "Objective-C/TOCropViewController/Resources/de.lproj"; sourceTree = "<group>"; };
 		5C0900895359CA317A2F3D2D0C9DBA4D /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = "Objective-C/TOCropViewController/Resources/en.lproj"; sourceTree = "<group>"; };
@@ -227,7 +233,6 @@
 		EBE10EE586BB500A13A55B7EBCECD2FA /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorCollectionViewCell.swift; path = iOSPhotoEditor/ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC2CF587FF54DB9A89D3E41BE5CD29D8 /* TOCropScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropScrollView.m; path = "Objective-C/TOCropViewController/Views/TOCropScrollView.m"; sourceTree = "<group>"; };
 		F454E7BD0B359A41F8AF0CEF6E5942E8 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fr.lproj; path = "Objective-C/TOCropViewController/Resources/fr.lproj"; sourceTree = "<group>"; };
-		F474A2EA1F916D37BE74ACD248237398 /* PhotoEditorViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PhotoEditorViewController.xib; path = iOSPhotoEditor/PhotoEditorViewController.xib; sourceTree = "<group>"; };
 		F6B945AF7F1F9225E27DA46C6A8B2D46 /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		F8080B6EEFC09F0838B4A8A9C61F0F31 /* da-DK.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "da-DK.lproj"; path = "Objective-C/TOCropViewController/Resources/da-DK.lproj"; sourceTree = "<group>"; };
 		FED24F6C258CF0CB34A65DDC76567085 /* fi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fi.lproj; path = "Objective-C/TOCropViewController/Resources/fi.lproj"; sourceTree = "<group>"; };
@@ -366,9 +371,10 @@
 				1FEDDB3519092AC8CD92A6D6DADECE1C /* ColorCollectionViewCell.xib */,
 				A6B1CCFC353DBE418F906E4A705AFE01 /* EmojiCollectionViewCell.xib */,
 				17636A373E4EB5E58DB14F2238A23D84 /* icomoon.ttf */,
-				F474A2EA1F916D37BE74ACD248237398 /* PhotoEditorViewController.xib */,
+				50A56B4C249789AC00CE27B8 /* PhotoEditorViewController.xib */,
 				79C1BC49647C60FCE6AA51C9B2D9759F /* StickerCollectionViewCell.xib */,
 				FF51AFB75573779FCB4BC6E2616E700B /* StickersViewController.xib */,
+				50A56B482497668700CE27B8 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = D7DBFDF2A265520B4B34806C1D3F5369 /* Products */;
@@ -661,7 +668,8 @@
 				689381059A852199044CBF8FCE4D3374 /* ColorCollectionViewCell.xib in Resources */,
 				03DF3850A4C1F20ED4E512060ECCEF91 /* EmojiCollectionViewCell.xib in Resources */,
 				A0B8B2C8829E2B79412349A1C7547D2C /* icomoon.ttf in Resources */,
-				DD3652E27BB637F3070F430CE9178AFF /* PhotoEditorViewController.xib in Resources */,
+				50A56B462497668700CE27B8 /* Localizable.strings in Resources */,
+				50A56B4A249789AC00CE27B8 /* PhotoEditorViewController.xib in Resources */,
 				AFB8EA71E29446979377134CA252E840 /* StickerCollectionViewCell.xib in Resources */,
 				DB724DD058689CEC12DADA6EDE48E877 /* StickersViewController.xib in Resources */,
 			);
@@ -799,6 +807,29 @@
 			targetProxy = 1755646AD62003C90F7BAE7ADC74C228 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50A56B482497668700CE27B8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50A56B472497668700CE27B8 /* en */,
+				50A56B492497897800CE27B8 /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		50A56B4C249789AC00CE27B8 /* PhotoEditorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50A56B4B249789AC00CE27B8 /* Base */,
+				50A56B4E249789AE00CE27B8 /* en */,
+				50A56B50249789B000CE27B8 /* ar */,
+			);
+			name = PhotoEditorViewController.xib;
+			path = iOSPhotoEditor;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1213491B9A48DE1BD375CF87BC8A21E4 /* Debug */ = {
@@ -952,6 +983,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1011,6 +1043,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -28,6 +28,10 @@
 		1CC43320DFA0E5FB03587FA7 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		26C7273557EAB2ED7CDEDA80 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EDA09DBDA53A2A66F9E859 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		50A56B5124978BA200CE27B8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		50A56B5224978BA200CE27B8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		50A56B5424978BF100CE27B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		50A56B5624978BF800CE27B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9EEB4D5FF7C66761863E5E50 /* Pods-editorTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-editorTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-editorTest/Pods-editorTest.release.xcconfig"; sourceTree = "<group>"; };
 		F2FE6D2857E80A528393FDF8 /* Pods-editorTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-editorTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-editorTest/Pods-editorTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +147,7 @@
 				English,
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 05D951C81EBB868F00DC2299;
 			productRefGroup = 05D951D21EBB868F00DC2299 /* Products */;
@@ -226,6 +231,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				05D951D91EBB868F00DC2299 /* Base */,
+				50A56B5124978BA200CE27B8 /* ar */,
+				50A56B5424978BF100CE27B8 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -234,6 +241,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				05D951DE1EBB868F00DC2299 /* Base */,
+				50A56B5224978BA200CE27B8 /* ar */,
+				50A56B5624978BF800CE27B8 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
