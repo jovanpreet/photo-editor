@@ -43,7 +43,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
-        let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
+        let photoEditor = PhotoEditorViewController()
         photoEditor.photoEditorDelegate = self
         photoEditor.originalImage = [image, image.copy() as! UIImage]
         //Colors for drawing and Text, If not set default values will be used

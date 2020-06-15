@@ -21,7 +21,9 @@
   },
   "source_files": "iOSPhotoEditor/**/*.{swift}",
   "exclude_files": "",
-  "resources": "iOSPhotoEditor/**/*.{png,jpeg,jpg,storyboard,xib,ttf}",
+  "resource_bundles": {
+    "iOSPhotoEditor": "iOSPhotoEditor/**/*.{png,jpeg,jpg,storyboard,xib,ttf,strings}"
+  },
   "dependencies": {
     "CropViewController": [
 
