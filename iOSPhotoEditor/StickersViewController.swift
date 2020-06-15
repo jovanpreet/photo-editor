@@ -65,13 +65,9 @@ class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
         
         collectioView.delegate = self
         collectioView.dataSource = self
-        
-        collectioView.register(
-            UINib(nibName: "StickerCollectionViewCell", bundle: Bundle(for: StickerCollectionViewCell.self)),
-            forCellWithReuseIdentifier: "StickerCollectionViewCell")
-        
-        //-----------------------------------
-        
+        if let bundleURL = Bundle(for: StickerCollectionViewCell.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL) {
+            collectioView.register(UINib(nibName: "StickerCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "StickerCollectionViewCell")
+        }
         let emojisFrame = CGRect(x: scrollView.frame.size.width,
                                  y: 0,
                                  width: UIScreen.main.bounds.width,
@@ -88,9 +84,9 @@ class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
         emojisDelegate.stickersViewControllerDelegate = stickersViewControllerDelegate
         emojisCollectioView.delegate = emojisDelegate
         emojisCollectioView.dataSource = emojisDelegate
-        emojisCollectioView.register(
-            UINib(nibName: "EmojiCollectionViewCell", bundle: Bundle(for: EmojiCollectionViewCell.self)),
-            forCellWithReuseIdentifier: "EmojiCollectionViewCell")
+        if let bundleURL = Bundle(for: EmojiCollectionViewCell.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL) {
+            emojisCollectioView.register(UINib(nibName: "EmojiCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "EmojiCollectionViewCell")
+        }
         prepareBackgroundView()
     }
     

@@ -75,11 +75,16 @@ public class PhotoEditorViewController: UIViewController {
     var activeTextView: UITextView?
     var imageViewToPan: UIImageView?
     var isTyping: Bool = false
-    
-    
     var stickersViewController: StickersViewController!
-
-    //Register Custom font before we load XIB
+    
+    convenience init() {
+        if let bundleURL = Bundle(for: PhotoEditorViewController.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL) {
+            self.init(nibName:"PhotoEditorViewController", bundle: bundle)
+        }else {
+            self.init(nibName:"PhotoEditorViewController", bundle: Bundle(for: PhotoEditorViewController.self))
+        }
+    }
+    
     public override func loadView() {
         registerFont()
         super.loadView()
@@ -152,7 +157,9 @@ public class PhotoEditorViewController: UIViewController {
         
         
         configureCollectionView()
-        stickersViewController = StickersViewController(nibName: "StickersViewController", bundle: Bundle(for: StickersViewController.self))
+        if let bundleURL = Bundle(for: StickersViewController.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL) {
+            stickersViewController = StickersViewController(nibName: "StickersViewController", bundle: bundle)
+        }
         hideControls()
     }
     
@@ -194,10 +201,9 @@ public class PhotoEditorViewController: UIViewController {
         }
         colorsCollectionView.delegate = colorsCollectionViewDelegate
         colorsCollectionView.dataSource = colorsCollectionViewDelegate
-        
-        colorsCollectionView.register(
-            UINib(nibName: "ColorCollectionViewCell", bundle: Bundle(for: ColorCollectionViewCell.self)),
-            forCellWithReuseIdentifier: "ColorCollectionViewCell")
+        if let bundleURL = Bundle(for: ColorCollectionViewCell.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL) {
+            colorsCollectionView.register(UINib(nibName: "ColorCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "ColorCollectionViewCell")
+        }
     }
     
     func setImageView(image: UIImage) {

@@ -11,18 +11,10 @@ import UIKit
 
 extension PhotoEditorViewController {
     
-    //Resources don't load in main bundle we have to register the font
     func registerFont() {
-        let bundle = Bundle(for: PhotoEditorViewController.self)
-            let url =  bundle.url(forResource: "icomoon", withExtension: "ttf")
-            
-            guard let fontDataProvider = CGDataProvider(url: url! as CFURL) else {
-                return
-            }
+        guard let bundleURL = Bundle(for: PhotoEditorViewController.self).resourceURL?.appendingPathComponent("iOSPhotoEditor.bundle"), let bundle = Bundle(url: bundleURL), let url =  bundle.url(forResource: "icomoon", withExtension: "ttf"), let fontDataProvider = CGDataProvider(url: url as CFURL) else { return }
             guard let font = CGFont(fontDataProvider) else {return}
             var error: Unmanaged<CFError>?
-            guard CTFontManagerRegisterGraphicsFont(font, &error) else {
-                return
-            }
+            guard CTFontManagerRegisterGraphicsFont(font, &error) else { return }
     }
 }
